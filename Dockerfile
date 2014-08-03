@@ -3,7 +3,7 @@ FROM sci-apps-base
 MAINTAINER Walter Moreira <wmoreira@tacc.utexas.edu>
 
 RUN yum groupinstall -y 'Development Tools'
-RUN yum install -y perl perl-devel perl-Archive-Tar perl-YAML perl-CPAN expat-devel
+RUN yum install -y perl mysql perl-devel perl-Archive-Tar perl-YAML perl-CPAN expat-devel
 
 ENV PERL_MM_USE_DEFAULT 1
 RUN perl -MCPAN -e 'install Test::More'
@@ -19,9 +19,14 @@ RUN find . -exec touch {} \; && \
     perl Makefile.PL && \
     make all && \
     make test && \
-    make install
+    make install && \
+    rm -rf /root/CPAN-Meta-Requirements*
 
-RUN perl -MCPAN -e 'install Module::Build DBI DBD::mysql DBD::SQLite DBD::Pg'
+RUN perl -MCPAN -e 'install Module::Build' && \
+    perl -MCPAN -e 'install DBI' && \
+    perl -MCPAN -e 'install DBD::mysql' && \
+    perl -MCPAN -e 'install DBD::SQLite' && \
+    perl -MCPAN -e 'install DBD::Pg'
 
 WORKDIR /root
 
@@ -30,7 +35,8 @@ RUN curl -LO http://bioperl.org/DIST/BioPerl-1.6.1.tar.bz2 && \
 
 WORKDIR BioPerl-1.6.1
 
-RUN perl Build.PL
-RUN ./Build install
+RUN perl Build.PL && \
+    ./Build install && \
+    rm -rf /root/BioPerl-1.6.1.tar.bz2
 
 RUN yum reinstall -y glibc-common
