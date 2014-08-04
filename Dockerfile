@@ -2,6 +2,15 @@ FROM sci-apps-base
 
 MAINTAINER Walter Moreira <wmoreira@tacc.utexas.edu>
 
+ENV _APP Bioperl
+ENV _VERSION 1.6.923
+ENV _LICENSE Perl Artistic License
+ENV _AUTHOR ""
+
+ADD usage.txt /docs/bioperl/usage.txt
+#ADD intro.txt /docs/bioperl/intro.txt
+#ADD examples.txt /docs/bioperl/examples.txt
+
 RUN yum groupinstall -y 'Development Tools'
 RUN yum install -y perl mysql perl-devel perl-Archive-Tar perl-YAML perl-CPAN expat-devel
 

@@ -1,0 +1,6 @@
+Usage
+=====
+
+- To see the version of `Bioperl`:
+
+        $ docker run bioperl-sci-app perl -MBio::Root::Version -e 'print $Bio::Root::Version::VERSION,"\n"'
