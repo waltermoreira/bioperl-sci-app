@@ -5,7 +5,7 @@ MAINTAINER Walter Moreira <wmoreira@tacc.utexas.edu>
 ENV _APP Bioperl
 ENV _VERSION 1.6.923
 ENV _LICENSE Perl Artistic License
-ENV _AUTHOR ""
+ENV _AUTHOR ___
 
 ADD usage.txt /docs/bioperl/usage.txt
 #ADD intro.txt /docs/bioperl/intro.txt
