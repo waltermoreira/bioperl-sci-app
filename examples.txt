@@ -1,0 +1,32 @@
+Examples
+========
+
+The following example is included in the Bioperl app.  Save it to a
+local file with:
+
+    $ docker run bioperl-sci-app cat /examples/demo.pl > demo.pl
+
+The file `demo.pl` contains the basic example:
+
+    use Bio::Seq;
+    use Bio::SeqIO;
+
+    # create a sequence object of some DNA
+    my $seq = Bio::Seq->new(-id => 'testseq', -seq => 'CATGTAGATAG');
+
+    # print out some details about it
+    print "seq is ", $seq->length, " bases long\n";
+    print "revcom seq is ", $seq->revcom->seq, "\n";
+
+    # write it to a file in Fasta format
+    my $out = Bio::SeqIO->new(-file => '>/data/testseq.fsa', -format => 'Fasta');
+    $out->write_seq($seq);
+
+Run it with:
+
+    $ docker run -v $(pwd):/data bioperl-sci-app perl /data/demo.pl
+    seq is 11 bases long
+    revcom seq is CTATCTACATG
+
+The demo should also create a file named `testseq.fsa` in the current
+directory.

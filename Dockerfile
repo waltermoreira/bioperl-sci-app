@@ -8,8 +8,9 @@ ENV _LICENSE Perl Artistic License
 ENV _AUTHOR ___
 
 ADD usage.txt /docs/bioperl/usage.txt
-#ADD intro.txt /docs/bioperl/intro.txt
-#ADD examples.txt /docs/bioperl/examples.txt
+ADD intro.txt /docs/bioperl/intro.txt
+ADD examples.txt /docs/bioperl/examples.txt
+ADD demo.pl /examples
 
 RUN yum groupinstall -y 'Development Tools'
 RUN yum install -y perl mysql perl-devel perl-Archive-Tar perl-YAML perl-CPAN expat-devel
