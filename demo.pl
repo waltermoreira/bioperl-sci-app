@@ -9,5 +9,5 @@ print "seq is ", $seq->length, " bases long\n";
 print "revcom seq is ", $seq->revcom->seq, "\n";
 
 # write it to a file in Fasta format
-my $out = Bio::SeqIO->new(-file => '>testseq.fsa', -format => 'Fasta');
+my $out = Bio::SeqIO->new(-file => '>/data/testseq.fsa', -format => 'Fasta');
 $out->write_seq($seq);
