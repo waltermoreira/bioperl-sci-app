@@ -1,4 +1,4 @@
-FROM sci-apps-base
+FROM base-sci-app
 
 MAINTAINER Walter Moreira <wmoreira@tacc.utexas.edu>
 
